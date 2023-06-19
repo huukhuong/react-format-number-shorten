@@ -5,33 +5,38 @@ const defaultConfig: Config = {
   decimalSeparator: ',',
   shorten: false,
 };
-
-const formatNumber = (
-  num: number | string | undefined,
-  config = defaultConfig
-) => {
+const formatNumber = (num: number | string | undefined, config = defaultConfig) => {
   if (num === undefined || num === '') {
     return '0';
   }
-
-  const {fixed, shorten, decimalSeparator} = config;
-
-  const parsedNum = typeof num === 'string' ? parseInt(num) : num;
-
+  const { fixed, shorten, decimalSeparator = ',' } = config;
+  const parsedNum = typeof num === 'string' ? parseFloat(num) : num;
   if (!shorten) {
-    return parsedNum.toFixed(fixed).replace(/(\d)(?=(\d{3})+(?!\d))/g, `$1${decimalSeparator}`);
+    const formattedNum = parsedNum.toLocaleString(undefined, {
+      minimumFractionDigits: fixed,
+      maximumFractionDigits: fixed,
+      useGrouping: true,
+    });
+
+    const path = formattedNum.split('.');
+    const separator = decimalSeparator === ',' ? '.' : ',';
+    const intPath = path[0].split(',').join(decimalSeparator);
+    const doublePath = path[1];
+
+    return intPath + separator + doublePath;
   } else {
     const suffixes = ['', 'K', 'M', 'B', 'T'];
     let suffixIndex = 0;
     let formattedNum = parsedNum;
-
     while (formattedNum >= 1000 && suffixIndex < suffixes.length - 1) {
       formattedNum /= 1000;
       suffixIndex++;
     }
-
-    return formattedNum.toFixed(fixed) + suffixes[suffixIndex];
+    return (
+      formattedNum.toFixed(fixed).replace('.', decimalSeparator) +
+      suffixes[suffixIndex]
+    );
   }
 };
 
-export default formatNumber;
+console.log(formatNumber(12345.678, { fixed: 2, decimalSeparator: '.' }));
