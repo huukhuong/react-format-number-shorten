@@ -1,0 +1,37 @@
+{
+  "name": "format-number",
+  "version": "1.0.0",
+  "description": "Format number as string output in React, Reac Native",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huukhuong/format-number.git"
+  },
+  "keywords": [
+    "format",
+    "number",
+    "typescrip",
+    "react",
+    "react",
+    "native",
+    "react",
+    "format",
+    "number",
+    "react",
+    "native",
+    "format",
+    "number",
+    "react",
+    "shorten",
+    "number"
+  ],
+  "author": "Huu Khuong Tran",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/huukhuong/format-number/issues"
+  },
+  "homepage": "https://github.com/huukhuong/format-number#readme"
+}
