@@ -5,6 +5,7 @@ const defaultConfig: Config = {
   decimalSeparator: ',',
   shorten: false,
 };
+
 const formatNumber = (num: number | string | undefined, config = defaultConfig) => {
   if (num === undefined || num === '') {
     return '0';
@@ -39,4 +40,4 @@ const formatNumber = (num: number | string | undefined, config = defaultConfig) 
   }
 };
 
-console.log(formatNumber(12345.678, { fixed: 2, decimalSeparator: '.' }));
+export default formatNumber;
