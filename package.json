@@ -2,8 +2,14 @@
   "name": "format-number",
   "version": "1.0.0",
   "description": "Format number as string output in React, Reac Native",
-  "main": "src/index.ts",
+  "main": "lib/index.ts",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
   "scripts": {
+    "build": "tsc",
+    "prepare" : "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -33,5 +39,8 @@
   "bugs": {
     "url": "https://github.com/huukhuong/format-number/issues"
   },
-  "homepage": "https://github.com/huukhuong/format-number#readme"
+  "homepage": "https://github.com/huukhuong/format-number#readme",
+  "devDependencies": {
+    "typescript": "^5.1.3"
+  }
 }
