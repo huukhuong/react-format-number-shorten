@@ -2,7 +2,7 @@
 
 ### Installation
 
-```js
+```console
 npm i react-format-number-shorten
 ```
 
