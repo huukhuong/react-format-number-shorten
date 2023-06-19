@@ -1,5 +1,5 @@
 export default interface Config {
-  fixed: number;
+  fixed?: number;
   decimalSeparator?: string;
   shorten?: boolean;
 }

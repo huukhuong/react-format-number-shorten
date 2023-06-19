@@ -2,7 +2,7 @@ import Config from "./types";
 
 const defaultConfig: Config = {
   fixed: 0,
-  decimalSeparator: '.',
+  decimalSeparator: ',',
   shorten: false,
 };
 
