@@ -1,5 +1,5 @@
 {
-  "name": "format-number",
+  "name": "react-format-number-shorten",
   "version": "1.0.0",
   "description": "Format number as string output in React, Reac Native",
   "main": "lib/index.js",
