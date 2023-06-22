@@ -1,4 +1,4 @@
-import Config from "./types";
+import Config from './types';
 
 const defaultConfig: Config = {
   fixed: 0,
@@ -6,14 +6,17 @@ const defaultConfig: Config = {
   shorten: false,
 };
 
-const formatNumber = (num: number | string | undefined, config = defaultConfig) => {
-  if (num === undefined || num === '') {
+const formatNumber = (
+  num: number | string | undefined,
+  config = defaultConfig
+) => {
+  if (!num || num.toString().trim() === '') {
     return '0';
   }
   const { fixed, shorten, decimalSeparator = ',' } = config;
-  const parsedNum = typeof num === 'string' ? parseFloat(num) : num;
+  const parsedNum = typeof num === 'string' ? Number(num) : num;
   if (!shorten) {
-    const formattedNum = parsedNum.toLocaleString(undefined, {
+    const formattedNum = parsedNum.toLocaleString('en-US', {
       minimumFractionDigits: fixed,
       maximumFractionDigits: fixed,
       useGrouping: true,
@@ -22,9 +25,11 @@ const formatNumber = (num: number | string | undefined, config = defaultConfig) 
     const path = formattedNum.split('.');
     const separator = decimalSeparator === ',' ? '.' : ',';
     const intPath = path[0].split(',').join(decimalSeparator);
-    const doublePath = path[1];
-
-    return intPath + separator + doublePath;
+    const doublePath = path[1] || '';
+    if (doublePath) {
+      return intPath + separator + doublePath;
+    }
+    return intPath;
   } else {
     const suffixes = ['', 'K', 'M', 'B', 'T'];
     let suffixIndex = 0;
