@@ -46,3 +46,4 @@ const formatNumber = (
 };
 
 export default formatNumber;
+export type { Config };
